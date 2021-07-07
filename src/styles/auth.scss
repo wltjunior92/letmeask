@@ -140,4 +140,41 @@
       margin-left: 16px;
     }
   }
+
+  h3 {
+    margin: 0;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .user-created-rooms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    max-height: 140px;
+    overflow-y: scroll;
+    padding: 8px;
+    background: #e9e8e8;
+    gap: 8px;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: #835afd;
+      border-radius: 5px;
+    }
+  
+    &::-webkit-scrollbar-thumb:hover {
+      filter: brightness(0.7);
+    }
+  }
 }

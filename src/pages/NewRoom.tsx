@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { useAuth } from '../hooks/useAuth';
@@ -11,12 +11,58 @@ import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 
 import '../styles/auth.scss'
+import { RoomCard } from '../components/RoomsCard';
+
+type FirebaseRooms = Record<string, {
+  id: string;
+  authorId: string;
+  endedAt: string | undefined;
+  title: string;
+}>
+
+type Room = {
+  id: string;
+  authorId: string;
+  endedAt: string | undefined;
+  title: string;
+}
 
 export function NewRoom() {
   const { user } = useAuth();
   const history = useHistory();
 
   const [newRoom, setNewRoom] = useState('');
+  const [userCreatedRooms, setUserCreatedRooms] = useState<Room[]>([]);
+
+  useEffect(() => {
+    const roomRef = database.ref('rooms');
+
+    roomRef.once('value', room => {
+      const databaseRoom = room.val();
+
+      const firebaseRoom: FirebaseRooms = databaseRoom ?? {};
+
+      const parsedRooms = Object.entries(firebaseRoom).map(([key, value]) => {
+        return {
+          id: key,
+          authorId: value.authorId,
+          endedAt: value.endedAt,
+          title: value.title,
+        }
+      }).filter(room => room.authorId === user?.id)
+        .filter(room => !room.endedAt);
+
+      setUserCreatedRooms(parsedRooms);
+    })
+
+    return () => {
+      roomRef.off('value');
+    }
+  }, [user?.id]);
+
+  function handleNavigateToExistingRoom(roomId: string) {
+    history.push(`/admin/rooms/${roomId}`);
+  }
 
   async function handleCreateRoom(event: FormEvent) {
     event.preventDefault();
@@ -61,6 +107,20 @@ export function NewRoom() {
           <p>
             Quer entrar em uma sala existente? <Link to="/">clique aqui</Link>
           </p>
+          {userCreatedRooms.length !== 0 &&
+            <>
+              <h3>Acesse uma sala que você já criou</h3>
+              <div className="user-created-rooms">
+                {userCreatedRooms.map(room => (
+                  <RoomCard
+                    key={room.id}
+                    title={room.title}
+                    onClick={() => handleNavigateToExistingRoom(room.id)}
+                  />
+                ))}
+              </div>
+            </>
+          }
         </div>
       </main>
     </div>

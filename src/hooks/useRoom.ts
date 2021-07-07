@@ -31,6 +31,7 @@ type QuestionProps = {
 export function useRoom(roomId: string) {
   const { user } = useAuth()
   const [questions, setQuestions] = useState<QuestionProps[]>([]);
+  const [isClosed, setIsClosed] = useState(false);
   const [title, setTitle] = useState('');
 
   useEffect(() => {
@@ -38,6 +39,7 @@ export function useRoom(roomId: string) {
 
     roomRef.on('value', room => {
       const databaseRoom = room.val();
+
       const fireBaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {};
 
       const parsedQuestions = Object.entries(fireBaseQuestions).map(([key, value]) => {
@@ -52,6 +54,7 @@ export function useRoom(roomId: string) {
         }
       });
 
+      setIsClosed(databaseRoom.endedAt ? true : false)
       setTitle(databaseRoom.title);
       setQuestions(parsedQuestions);
     })
@@ -61,5 +64,7 @@ export function useRoom(roomId: string) {
     }
   }, [roomId, user?.id]);
 
-  return { questions, title };
+  console.log();
+
+  return { questions, title, isClosed };
 }
