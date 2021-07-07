@@ -4,7 +4,7 @@
   height: 100vh;
 
   aside {
-    flex: 7;
+    flex: 3;
 
     background: #835afd;
     color: #fff;
@@ -19,17 +19,42 @@
       max-width: 320px;
     }
 
-    strong {
-      font: 700 36px 'Poppins', sans-serif;
-      line-height: 42px;
-      margin-top: 16px;
+    main {
+      flex-direction: column;
+
+      strong {
+        font: 700 36px 'Poppins', sans-serif;
+        line-height: 42px;
+        margin-top: 16px;
+      }
+  
+      p {
+        font-size: 24px;
+        line-height: 32px;
+        margin-top: 16px;
+        color: #f8f8f8;
+      }
     }
 
-    p {
-      font-size: 24px;
-      line-height: 32px;
-      margin-top: 16px;
-      color: #f8f8f8;
+    @media(max-width: 720px) {
+      flex-direction: row;
+      padding: 20px 10px;
+
+      img {
+        max-width: 120px;
+      }
+
+      main {
+        strong {
+          font-size: 24px;
+          line-height: 30px;
+        }
+
+        p {
+          font-size: 16px;
+          line-height: 18px;
+        }
+      }
     }
   }
 
@@ -176,5 +201,10 @@
     &::-webkit-scrollbar-thumb:hover {
       filter: brightness(0.7);
     }
+  }
+
+  @media(max-width: 720px) {
+    flex-direction: column-reverse;
+    height: 100vh;
   }
 }

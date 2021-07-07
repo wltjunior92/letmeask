@@ -80,9 +80,9 @@ export function AdminRoom() {
       await database.ref(`rooms/${roomId}`).update({
         endedAt: new Date(),
       })
-    }
 
-    history.push('/');
+      history.push('/');
+    }
   }
 
   return (
@@ -91,7 +91,7 @@ export function AdminRoom() {
         <div className="content">
           <img src={logoImg} alt="Letmeask" />
           <div>
-            <RoomCode code={roomId} />
+            <RoomCode code={roomId} isAdmin />
             <Button onClick={handleEndRoom} isOutlined>Encerrar sala</Button>
           </div>
         </div>
@@ -99,7 +99,7 @@ export function AdminRoom() {
 
       <main>
         <div className="room-title">
-          <h1>Sala {title}</h1>
+          <h1>Sala - {title}</h1>
           {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
         </div>
 

@@ -24,7 +24,19 @@
     flex: 1;
     padding: 0 16px 0 12px;
     width: 240px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
+
+    @media(max-width: 720px) {
+      width: 170px;
+    }
+  }
+
+  &.room-code-admin {
+    @media(max-width: 720px) {
+      span {
+        display: none;
+      }
+    }
   }
 }
