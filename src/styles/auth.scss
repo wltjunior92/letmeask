@@ -6,7 +6,7 @@
   aside {
     flex: 3;
 
-    background: #835afd;
+    background: var(--marine-blue);
     color: #fff;
 
     display: flex;
@@ -120,30 +120,30 @@
     height: 50px;
     border-radius: 8px;
     font-weight: 500;
-    background: #ea4335;
-    color: #FFF;
+    background: transparent;
+    color: var(--black);
+    border: 1px solid var(--medium-grey);
 
     display: flex;
     justify-content: center;
     align-items: center;
 
     cursor: pointer;
-    border: 0;
 
-    transition: filter 0.2s;
+    transition: border-color 0.2s;
 
     img {
       margin-right: 8px;
     }
 
     &:hover {
-      filter: brightness(0.9);
+      border: 1px solid var(--medium-grey-hover);
     }
   }
 
   .separator {
     font-size: 14px;
-    color: #a8a8b3;
+    color: var(--dark-grey);
 
     margin: 32px 0;
     display: flex;
@@ -153,7 +153,7 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: #a8a8b3;
+      background: var(--dark-grey);
       margin-right: 16px;
     }
 
@@ -161,7 +161,7 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: #a8a8b3;
+      background: var(--dark-grey);
       margin-left: 16px;
     }
   }
@@ -182,7 +182,8 @@
     max-height: 140px;
     overflow-y: scroll;
     padding: 8px;
-    background: #e9e8e8;
+    background: var(--light-grey-hover);
+    border-radius: 8px;
     gap: 8px;
 
     &::-webkit-scrollbar {

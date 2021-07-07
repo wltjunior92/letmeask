@@ -2,8 +2,8 @@
   height: 50px;
   border-radius: 8px;
   font-weight: 500;
-  background: #835afd;
-  color: #FFF;
+  background: var(--marine-blue);
+  color: var(--white);
   padding: 0 32px;
 
   display: flex;
@@ -13,20 +13,27 @@
   cursor: pointer;
   border: 0;
 
-  transition: filter 0.2s;
+  transition: background-color 0.2s;
 
   img {
     margin-right: 8px;
   }
 
   &.outlined {
-    background: #FFF;
-    border: 1px solid #835afd;
-    color: #835afd;
+    background: var(--white);
+    border: 1px solid var(--marine-blue);
+    color: var(--marine-blue);
+
+    transition: all 0.2s;
+
+    &:hover {
+      border-color: var(--marine-blue-hover);
+      color: var(--marine-blue-hover);
+    }
   }
 
   &:not(:disabled):hover {
-    filter: brightness(0.9);
+    background: var(--marine-blue-hover);
   }
 
   &:disabled {

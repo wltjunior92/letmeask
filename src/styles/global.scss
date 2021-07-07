@@ -4,9 +4,29 @@
   box-sizing: border-box;
 }
 
+:root {
+  --white: #ffffff;
+
+  --background: #EFFBFB;
+  --black: #29292E;
+  --shadow: rgba(0, 0, 0, 0.10);
+
+  --marine-blue: #1F2232;
+  --marine-blue-hover: #2f334b;
+  --light-danger: #FFF3D6;
+  --danger: #ECA400;
+  --danger-hover: #CC8F00;
+  
+  --light-grey: #DBDCDD;
+  --light-grey-hover: #CECECE;
+  --medium-grey: #A8A8B3;
+  --medium-grey-hover: #7E7E86;
+  --dark-grey: #737380;
+}
+
 body {
-  background: #f8f8f8;
-  color: #29292e;
+  background: var(--background);
+  color: var(--black);
 }
 
 body, input, button, textarea {

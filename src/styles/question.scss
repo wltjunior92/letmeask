@@ -1,7 +1,7 @@
 .question {
-  background: #fefefe;
+  background: var(--white);
   border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 12px var(--shadow);
   padding: 24px;
 
   & + .question {
@@ -9,16 +9,16 @@
   }
   
   &.highlighted {
-    background: #f4f0ff;
-    border: 1px solid #835afd;
+    background: var(--light-danger);
+    border: 1px solid var(--danger);
 
     footer .user-info span {
-      color: #29292e;
+      color: var(--black);
     }
   }
 
   &.answered {
-    background: #dbdcdd;
+    background: var(--medium-grey);
     
     footer .user-info img {
       filter: saturate(0);
@@ -26,7 +26,7 @@
   }
 
   p {
-    color: #29292e;
+    color: var(--black);
   }
 
   footer {
@@ -47,7 +47,7 @@
 
       span {
         margin-left: 8px;
-        color: #737380;
+        color: var(--dark-grey);
         font-size: 14px;
       }
     }
@@ -65,21 +65,21 @@
       &.like-button {
         display: flex;
         align-items: flex-end;
-        color: #737380;
+        color: var(--dark-grey);
         gap: 8px;
 
         transition: filter 0.2s;
 
         &.liked {
-          color: #835afd;
+          color: var(--danger);
 
           svg path {
-            stroke: #835afd;
+            stroke: var(--danger);
           }
         }
 
         &:hover {
-          filter: brightness(0.7);
+          color: var(--danger);
         }
       }
     }
