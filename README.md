@@ -54,6 +54,12 @@ Foi adicionado algumas features ao projeto original desenvolvido durante a Next 
     <img alt="Letmeask" src=".github/listagem.png" />
 </h1>
 
+#### Layout responsivo
+
+<h1 align="center">
+    <img alt="Letmeask" src=".github/responsivo.png" />
+</h1>
+
 ## 🔖 Link do projeto
 
 Acesse o projeto em produção:
